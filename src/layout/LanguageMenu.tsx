@@ -31,7 +31,7 @@ const LanguageMenu: React.FC = () => {
     setSelectedLanguage(language);
     i18n.changeLanguage(language);
     handleClose();
-    // Implement language change logic here
+    localStorage.setItem("language", language);
   };
 
   return (
