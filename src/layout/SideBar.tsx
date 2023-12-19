@@ -9,11 +9,12 @@ import ListItemText from "@mui/material/ListItemText";
 import {
   AssignmentTurnedIn,
   Home,
+  Sell,
   Spellcheck,
-  Style,
 } from "@mui/icons-material";
 import { useState } from "react";
 import { useLocation, useNavigate } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 
 const drawerWidth = 240;
 
@@ -77,27 +78,29 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
     }
   }, [location]);
 
+  const { t } = useTranslation("global");
+
   const menuOptions: MenuOption[] = [
     new MenuOption({
-      name: "Home",
+      name: t("home"),
       icon: <Home />,
       onClick: () => {
         navigate("/");
       },
     }),
     new MenuOption({
-      name: "Check grammar",
+      name: t("checkGrammar"),
       icon: <AssignmentTurnedIn />,
       onClick: () => {},
     }),
     new MenuOption({
-      name: "Check spelling",
+      name: t("checkSpelling"),
       icon: <Spellcheck />,
       onClick: () => {},
     }),
     new MenuOption({
-      name: "Flash card",
-      icon: <Style />,
+      name: t("flashCard"),
+      icon: <Sell />,
       onClick: () => {},
     }),
   ];
