@@ -1,13 +1,13 @@
-import { IWord, IWordNotFound } from "../../../types/dictionary";
+import { AxiosResponse } from "axios";
 import AxiosClient from "../axios";
 
 export const searchWord = async (word: string) => {
-  const response = await AxiosClient.get(`/${word}`);
+  const response: AxiosResponse = await AxiosClient.get(`/${word}`);
   if (response.status == 404) {
-    return response.data as IWordNotFound;
+    return response.data;
   }
   if (response.status != 200) {
     throw new Error("Something went wrong");
   }
-  return response.data[0] as IWord;
+  return response;
 };
