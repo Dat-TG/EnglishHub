@@ -60,7 +60,7 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
 
   React.useEffect(() => {
     switch (location.pathname) {
-      case "/":
+      case "/dictionary":
         setSelectedIndex(0);
         break;
       case "/check-grammar":
@@ -82,7 +82,7 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
 
   const menuOptions: MenuOption[] = [
     new MenuOption({
-      name: t("home"),
+      name: t("dictionary"),
       icon: <Home />,
       onClick: () => {
         navigate("/");
