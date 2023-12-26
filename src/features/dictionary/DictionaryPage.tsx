@@ -1,5 +1,5 @@
-import { Search } from "@mui/icons-material";
-import { Paper, IconButton, InputBase } from "@mui/material";
+import { Search, VolumeUpRounded } from "@mui/icons-material";
+import { Paper, IconButton, InputBase, Typography, Box } from "@mui/material";
 import { useEffect, useState } from "react";
 import { useTranslation } from "react-i18next";
 import { IWord, IWordNotFound } from "../../types/dictionary";
@@ -10,7 +10,7 @@ import { useNavigate, useSearchParams } from "react-router-dom";
 export default function DictionaryPage() {
   const { t } = useTranslation("global");
   const [word, setWord] = useState("");
-  const [wordFound, setWordFound] = useState<IWord>();
+  const [wordFound, setWordFound] = useState<IWord[]>();
   const [wordNotFound, setWordNotFound] = useState<IWordNotFound>();
   const navigate = useNavigate();
   const [searchParams] = useSearchParams();
@@ -20,22 +20,27 @@ export default function DictionaryPage() {
     setWord(searchParams.get("q")!);
     searchWord(searchParams!.get("q")!)
       .then((res: AxiosResponse) => {
-        if (res.status == 200) {
-          setWordFound(res.data[0] as IWord);
-        } else if (res.status == 404) {
-          setWordNotFound(res.data as IWordNotFound);
-        } else {
-          console.log("Error");
-        }
+        setWordFound(res.data as IWord[]);
+        setWordNotFound(undefined);
       })
       .catch((err) => {
         console.log(err);
+        setWordFound(undefined);
+        setWordNotFound({
+          title: t("wordNotFoundTitle"),
+          message: t("wordNotFoundMessage"),
+          resolution: t("wordNotFoundResolution"),
+        } as IWordNotFound);
       });
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [searchParams]);
   return (
-    <div
-      style={{
-        padding: "30px",
+    <Box
+      display={"flex"}
+      flexDirection={"column"}
+      sx={{
+        padding: "32px",
+        gap: "32px",
       }}
     >
       <Paper
@@ -75,15 +80,97 @@ export default function DictionaryPage() {
       </Paper>
       {wordFound && (
         <div>
-          <h1>{wordFound.word}</h1>
-          <p>{wordFound.meanings[0].definitions[0].definition}</p>
+          <Typography variant="h1">{wordFound[0].word}</Typography>
+          {wordFound[0].phonetics
+            .filter((e) => e.audio != "")
+            .map((phonetic, index) => (
+              <Box
+                display={"flex"}
+                flexDirection={"row"}
+                gap={"16px"}
+                alignItems={"center"}
+                key={`sound${index}`}
+              >
+                <IconButton
+                  onClick={() => {
+                    new Audio(phonetic.audio).play();
+                  }}
+                >
+                  <VolumeUpRounded color="primary" />
+                </IconButton>
+                <Typography variant="subtitle1">{phonetic.text}</Typography>
+              </Box>
+            ))}
         </div>
       )}
+      {wordFound &&
+        wordFound.map((wordFound, index) => (
+          <Box
+            key={index}
+            display={"flex"}
+            flexDirection={"column"}
+            gap={"32px"}
+          >
+            {wordFound.meanings.map((meaning, index) => (
+              <Box
+                key={`meaning${index}`}
+                display={"flex"}
+                flexDirection={"column"}
+                gap={"16px"}
+              >
+                <Typography
+                  sx={{
+                    fontSize: "1.6rem",
+                    fontWeight: "bold",
+                    color: "primary.main",
+                  }}
+                >
+                  {meaning.partOfSpeech}
+                </Typography>
+                {meaning.definitions.map((definition, index) => (
+                  <Box
+                    key={`definition${index}`}
+                    sx={{
+                      marginBottom: "16px",
+                    }}
+                  >
+                    <Typography variant="body1">
+                      {definition.definition}
+                    </Typography>
+                    {definition.example && (
+                      <Box display={"flex"} flexDirection={"row"} gap={"8px"}>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            color: "primary.main",
+                            fontWeight: "bold",
+                          }}
+                        >
+                          Example:
+                        </Typography>
+                        <Typography
+                          variant="body2"
+                          sx={{
+                            fontStyle: "italic",
+                          }}
+                        >
+                          {definition.example}
+                        </Typography>
+                      </Box>
+                    )}
+                  </Box>
+                ))}
+              </Box>
+            ))}
+          </Box>
+        ))}
       {wordNotFound && (
         <div>
-          <p>{wordNotFound.message}</p>
+          <Typography variant="h1">{wordNotFound.title}</Typography>
+          <Typography variant="subtitle1">{wordNotFound.message}</Typography>
+          <Typography variant="subtitle1">{wordNotFound.resolution}</Typography>
         </div>
       )}
-    </div>
+    </Box>
   );
 }
