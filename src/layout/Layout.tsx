@@ -16,7 +16,7 @@ function Layout() {
 
   //const { user } = useContext(AuthContext);
 
-  const [isLoggedIn, setIsLoggedIn] = useState<boolean>(true);
+  const [isLoggedIn /*setIsLoggedIn*/] = useState<boolean>(true);
   /*
   useEffect(() => {
     if (user != null) {
