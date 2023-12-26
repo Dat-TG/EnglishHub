@@ -1,6 +1,7 @@
 import { Navigate, createBrowserRouter } from "react-router-dom";
 import Layout from "../../layout/Layout";
 import DictionaryPage from "../../features/dictionary/DictionaryPage";
+import LearnThroughImagesPage from "../../features/learn-through-images/LearnThroughImagesPage";
 
 const router = createBrowserRouter([
   {
@@ -13,6 +14,10 @@ const router = createBrowserRouter([
       {
         path: "/dictionary",
         element: <DictionaryPage />,
+      },
+      {
+        path: "/learn-through-images",
+        element: <LearnThroughImagesPage />,
       },
     ],
   },
