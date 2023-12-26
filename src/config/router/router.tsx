@@ -1,6 +1,6 @@
-import { createBrowserRouter } from "react-router-dom";
+import { Navigate, createBrowserRouter } from "react-router-dom";
 import Layout from "../../layout/Layout";
-import HomePage from "../../features/home/HomePage";
+import DictionaryPage from "../../features/dictionary/DictionaryPage";
 
 const router = createBrowserRouter([
   {
@@ -8,7 +8,11 @@ const router = createBrowserRouter([
     children: [
       {
         path: "/",
-        element: <HomePage />,
+        element: <Navigate to="/dictionary" />,
+      },
+      {
+        path: "/dictionary",
+        element: <DictionaryPage />,
       },
     ],
   },

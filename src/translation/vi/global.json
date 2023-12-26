@@ -2,8 +2,12 @@
     "englishHubUppercase": "ENGLISH HUB",
     "english": "Tiếng Anh",
     "vietnamese": "Tiếng Việt",
-    "home": "Trang chủ",
+    "dictionary": "Từ điển",
     "checkGrammar": "Kiểm tra ngữ pháp",
     "checkSpelling": "Kiểm tra phát âm",
-    "flashCard": "Thẻ từ"
+    "flashCard": "Thẻ từ",
+    "searchDictionary": "Tìm kiếm từ điển",
+    "wordNotFoundTitle": "Không tìm thấy định nghĩa",
+    "wordNotFoundMessage": "Xin lỗi bạn, chúng tôi không thể tìm thấy định nghĩa cho từ bạn đang tìm kiếm",
+    "wordNotFoundResolution": "Bạn có thể thử tìm kiếm lại sau hoặc truy cập vào trang web"
 }
