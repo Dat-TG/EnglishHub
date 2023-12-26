@@ -9,6 +9,7 @@ import ListItemText from "@mui/material/ListItemText";
 import {
   AssignmentTurnedIn,
   Home,
+  ImageSearch,
   Sell,
   Spellcheck,
 } from "@mui/icons-material";
@@ -63,14 +64,17 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
       case "/dictionary":
         setSelectedIndex(0);
         break;
-      case "/check-grammar":
+      case "/learn-through-images":
         setSelectedIndex(1);
         break;
-      case "/check-spelling":
+      case "/check-grammar":
         setSelectedIndex(2);
         break;
+      case "/check-spelling":
+        setSelectedIndex(3);
+        break;
       case "/flash-card":
-        setSelectedIndex(2);
+        setSelectedIndex(4);
         break;
       default:
         setSelectedIndex(-1);
@@ -85,7 +89,14 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
       name: t("dictionary"),
       icon: <Home />,
       onClick: () => {
-        navigate("/");
+        navigate("/dictionary");
+      },
+    }),
+    new MenuOption({
+      name: t("learnThroughImages"),
+      icon: <ImageSearch />,
+      onClick: () => {
+        navigate("/learn-through-images");
       },
     }),
     new MenuOption({

@@ -9,5 +9,15 @@
     "searchDictionary": "Search dictionary",
     "wordNotFoundTitle": "No Definitions Found",
     "wordNotFoundMessage": "Sorry pal, we couldn't find definitions for the word you were looking for.",
-    "wordNotFoundResolution": "You can try the search again at later time or head to the web instead"
+    "wordNotFoundResolution": "You can try the search again at later time or head to the web instead",
+    "learnThroughImages": "Learn through images",
+    "imageIdentification": "Image identification",
+    "uploadImage": "Upload image",
+    "pasteImageURL": "Paste image URL",
+    "or": "OR",
+    "identifyImage": "Identify image",
+    "confidenceLevel": "Confidence level",
+    "bestGuess": "Best Guess",
+    "recentImages": "Recent images",
+    "modelLoading": "Model is loading..."
 }
