@@ -13,15 +13,19 @@ import theme from "./config/themes/theme";
 import router from "./config/router/router";
 import { I18nextProvider } from "react-i18next";
 import i18next from "./translation/i18next";
+import { Provider } from "react-redux";
+import { store } from "./store";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <CssBaseline>
+    <Provider store={store}>
       <I18nextProvider i18n={i18next}>
         <ThemeProvider theme={theme}>
           <RouterProvider router={router} />
         </ThemeProvider>
       </I18nextProvider>
+      </Provider>
     </CssBaseline>
   </React.StrictMode>
 );

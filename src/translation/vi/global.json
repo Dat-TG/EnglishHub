@@ -19,5 +19,15 @@
     "confidenceLevel": "Độ tin cậy",
     "bestGuess": "Đoán đúng nhất",
     "recentImages": "Ảnh gần đây",
-    "modelLoading": "Đang tải mô hình..."
+    "modelLoading": "Đang tải mô hình...",
+    "logIn": "Đăng nhập",
+    "logInUppercase": "ĐĂNG NHẬP",
+    "password": "Mật khẩu",
+    "notAMemberYet": "Chưa có tài khoản?",
+    "register": "Đăng ký",
+    "registerUppercase": "ĐĂNG KÝ",
+    "firstName": "Tên",
+    "lastName": "Họ",
+    "confirmPassword": "Xác nhận mật khẩu",
+    "alreadyHaveAnAccount": "Đã có tài khoản?"
 }

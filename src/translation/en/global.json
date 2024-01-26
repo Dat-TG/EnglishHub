@@ -19,5 +19,16 @@
     "confidenceLevel": "Confidence level",
     "bestGuess": "Best Guess",
     "recentImages": "Recent images",
-    "modelLoading": "Model is loading..."
+    "modelLoading": "Model is loading...",
+    "logIn": "Login",
+    "logInUppercase": "LOGIN",
+    "password": "Password",
+    "notAMemberYet": "Not a member yet?",
+    "register": "Register",
+    "registerUppercase": "REGISTER",
+    "firstName": "First name",
+    "lastName": "Last name",
+    "confirmPassword": "Confirm password",
+    "alreadyHaveAnAccount": "Already have an account?"
+    
 }
