@@ -63,23 +63,29 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
     switch (location.pathname) {
       case "/dictionary":
         setSelectedIndex(0);
+        document.title = t("dictionary");
         break;
       case "/learn-through-images":
         setSelectedIndex(1);
+        document.title = t("learnThroughImages");
         break;
       case "/check-grammar":
         setSelectedIndex(2);
+        document.title = t("checkGrammar");
         break;
       case "/check-spelling":
         setSelectedIndex(3);
+        document.title = t("checkSpelling");
         break;
       case "/flash-card":
         setSelectedIndex(4);
+        document.title = t("flashCard");
         break;
       default:
         setSelectedIndex(-1);
         break;
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [location]);
 
   const { t } = useTranslation("global");

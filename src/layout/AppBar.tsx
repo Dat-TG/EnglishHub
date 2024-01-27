@@ -13,6 +13,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { useTranslation } from "react-i18next";
 import LanguageMenu from "./LanguageMenu";
+import { useDispatch, useSelector } from "react-redux";
+import { sGetUserInfo } from "../store/user/selector";
+import { AppDispatch } from "../store";
+import { getUserProfile } from "../store/user/thunkApi";
 
 interface Props {
   toggleSidebar: () => void;
@@ -34,6 +38,13 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
   React.useEffect(() => {
     setAnchorEl(null);
   }, [props.isLoggedIn]);
+  const dispatch = useDispatch<AppDispatch>();
+
+  React.useEffect(() => {
+    dispatch(getUserProfile());
+  }, [dispatch]);
+
+  const user = useSelector(sGetUserInfo);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -42,6 +53,8 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
+  const { t } = useTranslation("global");
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -61,21 +74,29 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
       onClose={handleMenuClose}
       style={{ marginTop: "35px" }}
     >
+      {user != null && (
+        <MenuItem>
+          {t("welcome")} {user?.name}
+        </MenuItem>
+      )}
       <MenuItem
         onClick={() => {
           setAnchorEl(null);
           navigate("/profile");
         }}
       >
-        Profile
+        {t("profile")}
       </MenuItem>
-      <MenuItem onClick={props.onLogout}>Log out</MenuItem>
+      <MenuItem
+        onClick={() => {
+          props.onLogout();
+          setAnchorEl(null);
+        }}
+      >
+        {t("logout")}
+      </MenuItem>
     </Menu>
   );
-
-  //const { user } = React.useContext(AuthContext);
-
-  const { t } = useTranslation("global");
 
   return (
     <Box sx={{ flexGrow: 1 }}>
@@ -118,23 +139,46 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
                 }}
               >
                 <LanguageMenu />
-                <IconButton
-                  size="large"
-                  edge="end"
-                  aria-label="account of current user"
-                  aria-controls={menuId}
-                  aria-haspopup="true"
-                  onClick={handleProfileMenuOpen}
-                  color="inherit"
-                >
-                  <Avatar
-                    // alt={`${user?.firstname} ${user?.lastname}`}
-                    //src={user?.avatar}
-                    style={{
-                      border: "2px solid white",
-                    }}
-                  />
-                </IconButton>
+                {user != null ? (
+                  <IconButton
+                    size="large"
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    onClick={handleProfileMenuOpen}
+                    color="inherit"
+                  >
+                    <Avatar
+                      // alt={`${user?.firstname} ${user?.lastname}`}
+                      //src={user?.avatar}
+                      style={{
+                        border: "2px solid white",
+                      }}
+                    />
+                  </IconButton>
+                ) : (
+                  <>
+                    <Link
+                      to={"/login"}
+                      style={{
+                        textDecoration: "none",
+                        color: "white",
+                      }}
+                    >
+                      {t("logIn")}
+                    </Link>
+                    <Link
+                      to={"/register"}
+                      style={{
+                        textDecoration: "none",
+                        color: "white",
+                      }}
+                    >
+                      {t("register")}
+                    </Link>
+                  </>
+                )}
               </Box>
               <Box sx={{ display: { xs: "flex", md: "none" } }}>
                 <IconButton

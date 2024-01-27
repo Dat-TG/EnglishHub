@@ -1,5 +1,5 @@
 import { AxiosResponse } from "axios";
-import AxiosClient from "../axios";
+import AxiosClient from "../dictionary-client";
 
 export const searchWord = async (word: string) => {
   const response: AxiosResponse = await AxiosClient.get(`/${word}`);
