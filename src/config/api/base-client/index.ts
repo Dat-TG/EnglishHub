@@ -6,7 +6,7 @@ const AxiosClient = axios.create({
   baseURL:
     !import.meta.env.VITE_USE_MOCK && import.meta.env.VITE_REACT_APP_BASE_URL
       ? import.meta.env.VITE_REACT_APP_BASE_URL
-      : "https://web-advanced-server-v2.onrender.com/api",
+      : "https://englishhub.onrender.com/",
   headers: {
     Accept: "application/json",
   },

@@ -4,9 +4,9 @@ import { useTranslation } from "react-i18next";
 import { Link } from "react-router-dom";
 
 const LoginPage = () => {
-    const { t } = useTranslation("global");
-    return (
-        <Grid
+  const { t } = useTranslation("global");
+  return (
+    <Grid
       container
       justifyContent="center"
       alignItems="center"
@@ -18,25 +18,6 @@ const LoginPage = () => {
           style={{ padding: "32px", borderRadius: "7px", textAlign: "center" }}
         >
           <LogInForm />
-        
-          <div
-            className="or-divider"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              width: "100%",
-              padding: "25px",
-            }}
-          >
-            <span
-              className="divider-line"
-              style={{ flexGrow: 1, height: "1px", background: "#ccc" }}
-            ></span>
-            <span
-              className="divider-line"
-              style={{ flexGrow: 1, height: "1px", background: "#ccc" }}
-            ></span>
-          </div>
 
           <Stack
             spacing={0.5}
@@ -44,7 +25,7 @@ const LoginPage = () => {
             useFlexGap
             flexWrap="wrap"
             justifyContent={"center"}
-            marginTop={"16px"}
+            marginTop={"24px"}
           >
             <Typography>{t("notAMemberYet")}</Typography>
             <Link
@@ -57,7 +38,7 @@ const LoginPage = () => {
         </Paper>
       </Grid>
     </Grid>
-    )
-}
+  );
+};
 
 export default LoginPage;

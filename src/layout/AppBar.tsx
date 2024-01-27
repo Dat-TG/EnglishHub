@@ -13,6 +13,8 @@ import { Link, useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { useTranslation } from "react-i18next";
 import LanguageMenu from "./LanguageMenu";
+import { useSelector } from "react-redux";
+import { sGetUserInfo } from "../store/user/selector";
 
 interface Props {
   toggleSidebar: () => void;
@@ -73,7 +75,7 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
     </Menu>
   );
 
-  //const { user } = React.useContext(AuthContext);
+  const user = useSelector(sGetUserInfo);
 
   const { t } = useTranslation("global");
 
@@ -118,23 +120,46 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
                 }}
               >
                 <LanguageMenu />
-                <IconButton
-                  size="large"
-                  edge="end"
-                  aria-label="account of current user"
-                  aria-controls={menuId}
-                  aria-haspopup="true"
-                  onClick={handleProfileMenuOpen}
-                  color="inherit"
-                >
-                  <Avatar
-                    // alt={`${user?.firstname} ${user?.lastname}`}
-                    //src={user?.avatar}
-                    style={{
-                      border: "2px solid white",
-                    }}
-                  />
-                </IconButton>
+                {user != null ? (
+                  <IconButton
+                    size="large"
+                    edge="end"
+                    aria-label="account of current user"
+                    aria-controls={menuId}
+                    aria-haspopup="true"
+                    onClick={handleProfileMenuOpen}
+                    color="inherit"
+                  >
+                    <Avatar
+                      // alt={`${user?.firstname} ${user?.lastname}`}
+                      //src={user?.avatar}
+                      style={{
+                        border: "2px solid white",
+                      }}
+                    />
+                  </IconButton>
+                ) : (
+                  <>
+                    <Link
+                      to={"/login"}
+                      style={{
+                        textDecoration: "none",
+                        color: "white",
+                      }}
+                    >
+                      {t("logIn")}
+                    </Link>
+                    <Link
+                      to={"/register"}
+                      style={{
+                        textDecoration: "none",
+                        color: "white",
+                      }}
+                    >
+                      {t("register")}
+                    </Link>
+                  </>
+                )}
               </Box>
               <Box sx={{ display: { xs: "flex", md: "none" } }}>
                 <IconButton

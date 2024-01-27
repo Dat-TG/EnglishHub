@@ -1,6 +1,6 @@
 import React from "react";
 import ReactDOM from "react-dom/client";
-import { CssBaseline } from "@mui/material";
+import { CssBaseline, Grow } from "@mui/material";
 import { ThemeProvider } from "@emotion/react";
 import { RouterProvider } from "react-router-dom";
 
@@ -15,16 +15,25 @@ import { I18nextProvider } from "react-i18next";
 import i18next from "./translation/i18next";
 import { Provider } from "react-redux";
 import { store } from "./store";
+import { SnackbarProvider } from "notistack";
+import SnackbarCloseButton from "./common/SnackBarCloseButton";
 
 ReactDOM.createRoot(document.getElementById("root")!).render(
   <React.StrictMode>
     <CssBaseline>
-    <Provider store={store}>
-      <I18nextProvider i18n={i18next}>
-        <ThemeProvider theme={theme}>
-          <RouterProvider router={router} />
-        </ThemeProvider>
-      </I18nextProvider>
+      <SnackbarProvider
+        TransitionComponent={Grow}
+        autoHideDuration={5000}
+        action={(snackbarKey) => (
+          <SnackbarCloseButton snackbarKey={snackbarKey} />
+        )}
+      />
+      <Provider store={store}>
+        <I18nextProvider i18n={i18next}>
+          <ThemeProvider theme={theme}>
+            <RouterProvider router={router} />
+          </ThemeProvider>
+        </I18nextProvider>
       </Provider>
     </CssBaseline>
   </React.StrictMode>

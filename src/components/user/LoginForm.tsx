@@ -39,7 +39,7 @@ function LogInForm() {
     setIsLoading(true);
     await dispatch(
       loginUser({
-        userName: data.email,
+        email: data.email,
         password: data.password,
       })
     );

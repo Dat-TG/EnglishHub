@@ -1,4 +1,3 @@
-
 import {
   IInformationUpdateReq,
   ILoginGoogle,
@@ -15,12 +14,12 @@ import {
   createAsyncThunk,
   createSlice,
 } from "@reduxjs/toolkit";
-import { userApi } from "../../api/axios";
+import { userApi } from "../../config/api/base-client";
 import { withParamsToastCatcher } from "../toastCatcher";
 import { removeAllToken } from "../../utils/token";
-import i18next from "i18next";
 import { IUserStore } from "./type";
 import { userReducer } from "./reducer";
+import i18next from "../../translation/i18next";
 
 const fullPermissions = {
   create: false,
@@ -43,25 +42,6 @@ const initialState: IUserStore = {
   },
   errorMessage: "",
   userProfile: null,
-  // {
-  //   id: NaN,
-  //   createdBy: '',
-  //   createdTime: '',
-  //   updatedBy: '',
-  //   updatedTime: '',
-  //   deletedBy: NaN,
-  //   deletedTime: '',
-  //   isDeleted: false,
-  //   userName: '',
-  //   emailAddress: '',
-  //   name: '',
-  //   surname: '',
-  //   phoneNumber: '',
-  //   avatar: '',
-  //   roles: [],
-  //   iat: NaN,
-  //   exp: 0,
-  // },
   userRoles: [],
   userRolePermissions: {
     authorization: { ...fullPermissions },

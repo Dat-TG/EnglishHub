@@ -1,12 +1,12 @@
 import {
-  IInformationUpdateReq,
   ILoginUserReq,
-  IPasswordUpdateReq,
   IRegisterUserReq,
-  IResetPassword,
+  IInformationUpdateReq,
+  IPasswordUpdateReq,
   IUpdateUserRole,
-} from "../../types/user";
-import AxiosClient from "../axios";
+  IResetPassword,
+} from "../../../types/user";
+import AxiosClient from "../base-client";
 
 const url = "/user";
 
@@ -15,12 +15,8 @@ export const login = async (data: ILoginUserReq) => {
   return res.data;
 };
 
-
 export const register = async (data: IRegisterUserReq) => {
-  console.log("call api register");
-  console.log(data);
   const res = await AxiosClient.post("/auth/register", data);
-  console.log(res.data);
   return res.data;
 };
 
@@ -65,10 +61,9 @@ export const getUserById = async (id: number) => {
 };
 
 export const getUserProfile = async () => {
-  const res = await AxiosClient.get(`${url}/profile`);
+  const res = await AxiosClient.get(`/user/profile`);
   return res.data;
 };
-
 
 export const uploadAvatar = (avatar: File) => {
   const formData = new FormData();
@@ -89,6 +84,3 @@ export const resetPassword = async (data: IResetPassword) => {
   const res = await AxiosClient.post("/auth/forget-password", data);
   return res.data;
 };
-
-
-

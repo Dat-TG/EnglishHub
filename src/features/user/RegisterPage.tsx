@@ -16,29 +16,15 @@ const RegisterPage = () => {
       container
       justifyContent="center"
       alignItems="center"
-      style={{ minHeight: "100vh", marginBottom: "48px" }}
+      style={{ minHeight: "100vh", marginBottom: "48px", marginTop: "48px" }}
     >
-      <Grid item xs={12} sm={8} md={6} lg={4}>
+      <Grid item xs={12} sm={10} md={8} lg={6}>
         <Paper
           elevation={3}
-          style={{ padding: "32px", borderRadius: "7px", textAlign: "center" }}
+          style={{ padding: "32px", borderRadius: "8px", textAlign: "center" }}
         >
           {/* Register form */}
           <RegisterForm />
-          <div
-            className="or-divider"
-            style={{
-              display: "flex",
-              alignItems: "center",
-              width: "100%",
-              padding: "25px",
-            }}
-          >
-            <span
-              className="divider-line"
-              style={{ flexGrow: 1, height: "1px", background: "#ccc" }}
-            ></span>
-          </div>
 
           <Stack
             spacing={0.5}
@@ -46,7 +32,7 @@ const RegisterPage = () => {
             useFlexGap
             flexWrap="wrap"
             justifyContent={"center"}
-            marginTop={"10px"}
+            marginTop={"24px"}
           >
             <Typography>{t("alreadyHaveAnAccount")}</Typography>
             <Link
@@ -60,6 +46,6 @@ const RegisterPage = () => {
       </Grid>
     </Grid>
   );
-}
+};
 
 export default RegisterPage;

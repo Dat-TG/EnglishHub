@@ -9,17 +9,15 @@ export interface IUserLogin {
 }
 
 export interface IRegisterUserReq {
-  emailAddress: string;
+  email: string;
   password: string;
-  firstName: string;
-  surname: string;
+  name: string;
 }
 
 export interface ILoginUserReq {
-  userName: string;
+  email: string;
   password: string;
 }
-
 
 export interface IInformationUpdateReq {
   name: string;
@@ -111,32 +109,21 @@ export interface UserRoles {
 }
 
 export interface IUserProfileRes {
-  id: number;
-  createdBy: string;
-  createdTime: string;
-  updatedBy: string;
-  updatedTime: string;
-  deletedBy: number;
-  deletedTime: string;
-  isDeleted: boolean;
-  userName: string;
-  emailAddress: string;
+  _id: string;
+  createdAt: string;
+  updatedAt: string;
+  email: string;
   name: string;
-  surname: string;
-  phoneNumber: string;
   avatar: string;
-  roles: UserRoles[];
-  iat: number;
-  exp: number;
+  type: string;
 }
 
 export interface IUserInformationSelector {
-  id: number;
+  _id: string;
   name: string;
-  surname: string;
   avatar: string;
-  emailAddress: string;
-  roles: UserRoles[];
+  email: string;
+  type: string;
 }
 
 export interface IUserRole {
@@ -173,6 +160,6 @@ export interface IResetPassword {
 }
 
 export interface ILoginGoogle {
-    accessToken: string;
-    refreshToken: string;
-  }
+  accessToken: string;
+  refreshToken: string;
+}

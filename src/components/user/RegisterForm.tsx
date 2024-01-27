@@ -20,8 +20,7 @@ import { emailPattern } from "../../utils/helpers";
 
 type Inputs = {
   email: string;
-  firstname: string;
-  lastname: string;
+  name: string;
   password: string;
   confirmPassword: string;
 };
@@ -49,10 +48,9 @@ function RegisterForm() {
 
     await dispatch(
       registerUser({
-        emailAddress: data.email,
+        email: data.email,
         password: data.password,
-        firstName: data.firstname,
-        surname: data.lastname,
+        name: data.name,
       })
     );
 
@@ -98,9 +96,9 @@ function RegisterForm() {
         )}
       />
 
-      {/* First Name input */}
+      {/* Name input */}
       <Controller
-        name="firstname"
+        name="name"
         control={control}
         rules={{
           required: true,
@@ -113,31 +111,9 @@ function RegisterForm() {
             label={t("firstName")}
             fullWidth
             variant="outlined"
-            error={!!errors.firstname}
+            error={!!errors.name}
             placeholder=""
-            helperText={errors.firstname ? t("firstNameValidationMessage") : ""}
-          />
-        )}
-      />
-
-      {/* Last Name input */}
-      <Controller
-        name="lastname"
-        control={control}
-        rules={{
-          required: true,
-        }}
-        defaultValue=""
-        render={({ field }) => (
-          <TextField
-            style={{ marginTop: "32px" }}
-            {...field}
-            label={t("lastName")}
-            fullWidth
-            variant="outlined"
-            error={!!errors.lastname}
-            placeholder=""
-            helperText={errors.lastname ? t("lastNameValidationMessage") : ""}
+            helperText={errors.name ? t("firstNameValidationMessage") : ""}
           />
         )}
       />
