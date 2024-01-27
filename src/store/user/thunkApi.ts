@@ -44,10 +44,9 @@ export const registerUser = createAsyncThunk(
   }, i18next.t("global:registerSuccessfully"))
 );
 
-export const logoutUser = createAsyncThunk("user/logout", async () => {
-  const res = await userApi.logout();
+export const logoutUser = createAsyncThunk("user/logout", () => {
   removeAllToken();
-  return res;
+  return true;
 });
 
 export const updateInformationUser = createAsyncThunk(

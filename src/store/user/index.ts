@@ -20,6 +20,7 @@ import { removeAllToken } from "../../utils/token";
 import { IUserStore } from "./type";
 import { userReducer } from "./reducer";
 import i18next from "../../translation/i18next";
+import toast from "../../utils/toast";
 
 const fullPermissions = {
   create: false,
@@ -67,10 +68,9 @@ const getUserProfile = createAsyncThunk("user/getUserProfile", async () => {
   return result;
 });
 
-const logoutUser = createAsyncThunk("user/logout", async () => {
-  const res = await userApi.logout();
+const logoutUser = createAsyncThunk("user/logout", () => {
   removeAllToken();
-  return res;
+  return true;
 });
 
 const registerUser = createAsyncThunk(
@@ -139,7 +139,10 @@ const userSlice = createSlice({
         state.hasLoadedProfile = true;
       }
     );
-    builder.addCase(logoutUser.fulfilled, () => {});
+    builder.addCase(logoutUser.fulfilled, (state: IUserStore) => {
+      state.userProfile = null;
+      toast.success(i18next.t("global:logoutSuccessfully"));
+    });
     builder.addCase(registerUser.fulfilled, () => {});
     builder.addCase(
       updateInformationUser.fulfilled,

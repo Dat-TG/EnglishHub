@@ -1,15 +1,22 @@
 import { Grid, Paper, Stack, Typography } from "@mui/material";
-import { Link } from "react-router-dom";
+import { Link, Navigate } from "react-router-dom";
 import { useEffect } from "react";
 import { useTranslation } from "react-i18next";
 import RegisterForm from "../../components/user/RegisterForm";
+import { useSelector } from "react-redux";
+import { sGetUserInfo } from "../../store/user/selector";
 
 const RegisterPage = () => {
-  useEffect(() => {
-    document.title = "Register";
-  }, []);
-
   const { t } = useTranslation("global");
+
+  useEffect(() => {
+    document.title = t("register");
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
+  const user = useSelector(sGetUserInfo);
+  if (user != null) {
+    return <Navigate to={"/dictionary"} />;
+  }
 
   return (
     <Grid

@@ -4,8 +4,9 @@ import Sidebar from "./SideBar";
 
 import Appbar from "./AppBar";
 import { Outlet } from "react-router-dom";
-//import { useUser } from "../../../hooks/useUser";
-//import { AuthContext } from "../../../context/AuthContext";
+import { logoutUser } from "../store/user/thunkApi";
+import { useDispatch } from "react-redux";
+import { AppDispatch } from "../store";
 
 function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
@@ -14,30 +15,21 @@ function Layout() {
     setIsSidebarOpen(!isSidebarOpen);
   };
 
-  //const { user } = useContext(AuthContext);
-
-  const [isLoggedIn /*setIsLoggedIn*/] = useState<boolean>(true);
-  /*
-  useEffect(() => {
-    if (user != null) {
-      setIsLoggedIn(true);
-    } else {
-      setIsLoggedIn(false);
-    }
-    console.log(user);
-  }, [user]);
-
-  const { logout } = useUser();*/
+  const dispatch = useDispatch<AppDispatch>();
 
   return (
     <>
       <Appbar
         toggleSidebar={toggleSidebar}
-        isLoggedIn={isLoggedIn}
-        onLogout={/*logout*/ () => {}}
+        isLoggedIn={true}
+        onLogout={
+          /*logout*/ async () => {
+            await dispatch(logoutUser());
+          }
+        }
       />
       <div style={{ display: "flex" }}>
-        {isLoggedIn && <Sidebar open={isSidebarOpen} />}
+        <Sidebar open={isSidebarOpen} />
         <main
           style={{ flex: 1, transition: "margin-left 0.3s", marginTop: "64px" }}
         >

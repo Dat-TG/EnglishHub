@@ -13,8 +13,10 @@ import { Link, useNavigate } from "react-router-dom";
 import Avatar from "@mui/material/Avatar";
 import { useTranslation } from "react-i18next";
 import LanguageMenu from "./LanguageMenu";
-import { useSelector } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { sGetUserInfo } from "../store/user/selector";
+import { AppDispatch } from "../store";
+import { getUserProfile } from "../store/user/thunkApi";
 
 interface Props {
   toggleSidebar: () => void;
@@ -36,6 +38,13 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
   React.useEffect(() => {
     setAnchorEl(null);
   }, [props.isLoggedIn]);
+  const dispatch = useDispatch<AppDispatch>();
+
+  React.useEffect(() => {
+    dispatch(getUserProfile());
+  }, [dispatch]);
+
+  const user = useSelector(sGetUserInfo);
 
   const handleProfileMenuOpen = (event: React.MouseEvent<HTMLElement>) => {
     setAnchorEl(event.currentTarget);
@@ -44,6 +53,8 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
   const handleMenuClose = () => {
     setAnchorEl(null);
   };
+
+  const { t } = useTranslation("global");
 
   const menuId = "primary-search-account-menu";
   const renderMenu = (
@@ -63,21 +74,29 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
       onClose={handleMenuClose}
       style={{ marginTop: "35px" }}
     >
+      {user != null && (
+        <MenuItem>
+          {t("welcome")} {user?.name}
+        </MenuItem>
+      )}
       <MenuItem
         onClick={() => {
           setAnchorEl(null);
           navigate("/profile");
         }}
       >
-        Profile
+        {t("profile")}
       </MenuItem>
-      <MenuItem onClick={props.onLogout}>Log out</MenuItem>
+      <MenuItem
+        onClick={() => {
+          props.onLogout();
+          setAnchorEl(null);
+        }}
+      >
+        {t("logout")}
+      </MenuItem>
     </Menu>
   );
-
-  const user = useSelector(sGetUserInfo);
-
-  const { t } = useTranslation("global");
 
   return (
     <Box sx={{ flexGrow: 1 }}>

@@ -37,5 +37,8 @@
     "passwordValidate": "Mật khẩu phải có ít nhất 6 ký tự",
     "passwordNotMatch": "Mật khẩu không khớp",
     "emailValidationMessage": "Vui lòng nhập email hợp lệ",
-    "firstNameValidationMessage": "Vui lòng nhập tên."
+    "firstNameValidationMessage": "Vui lòng nhập tên.",
+    "welcome": "Chào mừng",
+    "profile": "Hồ sơ",
+    "logout": "Đăng xuất"
 }

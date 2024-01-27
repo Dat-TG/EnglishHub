@@ -37,5 +37,8 @@
     "passwordValidate": "Password must be at least 6 characters long",
     "passwordNotMatch": "Password does not match",
     "emailValidationMessage": "Please enter a valid email address.",
-    "firstNameValidationMessage": "Please enter your first name."
+    "firstNameValidationMessage": "Please enter your first name.",
+    "welcome": "Welcome",
+    "profile": "Profile",
+    "logout": "Logout"
 }

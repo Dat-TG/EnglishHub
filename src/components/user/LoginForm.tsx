@@ -7,7 +7,7 @@ import {
   TextField,
   Typography,
 } from "@mui/material";
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Controller, SubmitHandler, useForm } from "react-hook-form";
 import { useTranslation } from "react-i18next";
 import { useDispatch } from "react-redux";
@@ -22,10 +22,6 @@ type Inputs = {
 
 function LogInForm() {
   const [isLoading, setIsLoading] = useState(false);
-
-  useEffect(() => {
-    document.title = "Log In";
-  }, []);
 
   const {
     control,
