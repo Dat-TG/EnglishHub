@@ -10,7 +10,6 @@ import {
   IRegisterUserReq,
   IInformationUpdateReq,
   IPasswordUpdateReq,
-  IUpdateUserRole,
   ILoginGoogle,
   IUsersRes,
   IUserProfileRes,
@@ -33,6 +32,15 @@ export const getUserProfile = createAsyncThunk(
   "user/getUserProfile",
   async () => {
     const result = await userApi.getUserProfile();
+    return result;
+  }
+);
+
+export const getAllFlashCardList = createAsyncThunk(
+  "user/flashcard",
+  async () => {
+    const result = await userApi.getAllFlashCardList();
+    console.log(result);
     return result;
   }
 );
@@ -70,12 +78,6 @@ export const getAllUsers = createAsyncThunk("user", async () => {
   return res;
 });
 
-export const updateUser = createAsyncThunk(
-  "user/roles",
-  withParamsToastCatcher(async (userRoles: IUpdateUserRole) => {
-    await userApi.updateUserRole(userRoles);
-  }, "Update user roles successfully")
-);
 
 export const updateAvatar = createAsyncThunk(
   "user/avatar",
@@ -118,9 +120,6 @@ export const extraReducers = (
         state.users = action.payload;
       }
     )
-    .addCase(updateUser.fulfilled, () => {
-      return;
-    })
     .addCase(
       updateInformationUser.fulfilled,
       (state: IUserStore, action: PayloadAction<IUserProfileRes>) => {

@@ -1,65 +1,70 @@
-import {
-  Avatar,
-  Card,
-  CardContent,
-  CardHeader,
-  CardMedia,
-  Typography,
-} from "@mui/material";
-import { useState } from "react";
-import ReactCardFlip from "react-card-flip";
+import { IFlashCardList } from "../../types/flashcard";
+import FlashCard from "../../components/flash-card/FlashCard";
+import { useEffect, useState } from "react";
+import { useParams } from "react-router-dom";
+import { getFlashCardListById } from "../../config/api/flashcard/apiFlashcard";
 
-export default function DictionaryPage() {
-  const [isFlipped, setIsFlipped] = useState<boolean | undefined>(false);
+export default function LearnFlashCardPage() {
 
-  const handleFlip = () => {
-    setIsFlipped((prevState) => !prevState);
-  };
+    const { ListId } = useParams();
+    const [flashCardList, setFlashCardList] = useState<IFlashCardList>();
 
-  return (
-    <ReactCardFlip
-      isFlipped={isFlipped}
-      flipSpeedBackToFront={0.1}
-      flipSpeedFrontToBack={0.1}
-      flipDirection="vertical"
-    >
-      <Card sx={{ maxWidth: 345 }} onClick={handleFlip}>
-        <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-              R
-            </Avatar>
-          }
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
-        />
-        <CardMedia component="img" height="194" alt="Paella dish" />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            This impressive paella is a perfect party dish and a fun meal to
-            cook together with your guests. Add 1 cup of frozen peas along with
-            the mussels, if you like.
-          </Typography>
-        </CardContent>
-      </Card>
+    useEffect(() => {
 
-      <Card sx={{ maxWidth: 345 }} onClick={handleFlip}>
-        <CardHeader
-          avatar={
-            <Avatar sx={{ bgcolor: "red" }} aria-label="recipe">
-              R
-            </Avatar>
-          }
-          title="Shrimp and Chorizo Paella"
-          subheader="September 14, 2016"
-        />
-        <CardMedia component="img" height="194" alt="Paella dish" />
-        <CardContent>
-          <Typography variant="body2" color="text.secondary">
-            en peas along with the mussels, if you like.
-          </Typography>
-        </CardContent>
-      </Card>
-    </ReactCardFlip>
-  );
+        if (ListId) {
+            getFlashCardListById(ListId).then(
+                (res) => {
+                    setFlashCardList(res);
+                }
+            )
+        }
+    }, [ListId]);
+
+    let cards = null;
+
+    if (flashCardList && flashCardList.flashcards) {
+        cards = flashCardList.flashcards.map((card) => (
+            <FlashCard key={card._id} card={card} />
+        ));
+    }
+
+    const [current, setCurrent] = useState(0);
+
+    const previousCard = () => {
+        setCurrent(current - 1);
+    }
+
+    const nextCard = () => {
+        setCurrent(current + 1);
+    }
+    return (
+
+        <div>
+
+            <div className="cardNumber">
+                Card {current + 1} of {cards?.length}
+            </div>
+
+            {cards && cards[current]}
+
+            <div >
+                {current > 0 ? (
+                    <button onClick={previousCard}>Previous card</button>
+                ) : (
+                    <button disabled>
+                        Previous card
+                    </button>
+                )}
+
+                {cards && current < cards.length - 1 ? (
+                    <button onClick={nextCard}>Next card</button>
+                ) : (
+                    <button disabled>
+                        Next card
+                    </button>
+                )}
+            </div>
+        </div>
+
+    )
 }

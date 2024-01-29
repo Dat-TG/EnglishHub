@@ -40,5 +40,16 @@
     "firstNameValidationMessage": "Please enter your first name.",
     "welcome": "Welcome",
     "profile": "Profile",
-    "logout": "Logout"
+    "logout": "Logout",
+    "createNewSet": "Create new set",
+    "editSet" : "Edit Set",
+    "save": "Save",
+    "create" : "Create",
+    "edit": "Edit",
+    "delete": "Delete",
+    "yourAllSets": "Your all flash card sets",
+    "card" : "card",
+    "cards" : "cards",
+    "title" : "Title",
+    "addNewCard" : "Add new card"
 }

@@ -4,7 +4,10 @@ import DictionaryPage from "../../features/dictionary/DictionaryPage";
 import LearnThroughImagesPage from "../../features/learn-through-images/LearnThroughImagesPage";
 import LoginPage from "../../features/user/LoginPage";
 import RegisterPage from "../../features/user/RegisterPage";
+import FlashCardSetsPage from "../../features/flash-card/FlashCardSetsPage";
 import LearnFlashCardPage from "../../features/flash-card/LearnFlashCardPage";
+import CreateSet from "../../features/flash-card/CreateSet";
+import EditSet from "../../features/flash-card/EditSet";
 
 const router = createBrowserRouter([
   {
@@ -32,8 +35,20 @@ const router = createBrowserRouter([
       },
       {
         path: "/learn-flashcard",
+        element: <FlashCardSetsPage />,
+      },
+      {
+        path: "/learn-flashcard/:ListId",
         element: <LearnFlashCardPage />,
       },
+      {
+        path: "/create-set",
+        element: <CreateSet />,
+      },
+      {
+        path: "/edit-set/:ListId",
+        element: <EditSet />,
+      }
     ],
   },
 ]);

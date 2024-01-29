@@ -77,7 +77,7 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
         setSelectedIndex(3);
         document.title = t("checkSpelling");
         break;
-      case "/flash-card":
+      case "/learn-flashcard":
         setSelectedIndex(4);
         document.title = t("flashCard");
         break;
@@ -118,7 +118,9 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
     new MenuOption({
       name: t("flashCard"),
       icon: <Sell />,
-      onClick: () => {},
+      onClick: () => {
+        navigate("/learn-flashcard");
+      },
     }),
   ];
 
