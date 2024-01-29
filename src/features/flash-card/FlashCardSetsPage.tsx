@@ -142,7 +142,13 @@ export default function FlashCardSetsPage() {
           </Grid>
 
           {flashCardSets.map((set) => (
-            <Grid item xs={3}>
+            <Grid
+              item
+              xs={3}
+              sx={{
+                ml: 5,
+              }}
+            >
               <Card key={set._id} sx={{ width: 300, height: 200, mt: 1 }}>
                 <CardHeader
                   action={

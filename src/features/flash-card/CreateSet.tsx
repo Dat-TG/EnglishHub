@@ -6,8 +6,10 @@ import {
 } from "../../config/api/flashcard/apiFlashcard";
 import { IFlashCardList, IFlashcardListReq } from "../../types/flashcard";
 import toast from "../../utils/toast";
+import { useNavigate } from "react-router";
 
 export default function CreateSet() {
+  const navigate = useNavigate();
   const newFlashCardSet: IFlashCardList = {
     _id: "",
     name: "",
@@ -31,6 +33,7 @@ export default function CreateSet() {
           .then((res) => {
             toast.success("Add flashcards successfully");
             console.log(res);
+            setTimeout(() => navigate("/learn-flashcard"), 1000);
           })
           .catch((err) => {
             console.log(err);
