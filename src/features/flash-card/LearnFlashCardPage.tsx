@@ -3,6 +3,9 @@ import FlashCard from "../../components/flash-card/FlashCard";
 import { useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { getFlashCardListById } from "../../config/api/flashcard/apiFlashcard";
+import { IconButton } from "@mui/material";
+import ArrowBackIosIcon from '@mui/icons-material/ArrowBackIos';
+import ArrowForwardIosIcon from '@mui/icons-material/ArrowForwardIos';
 
 export default function LearnFlashCardPage() {
 
@@ -49,19 +52,23 @@ export default function LearnFlashCardPage() {
 
             <div >
                 {current > 0 ? (
-                    <button onClick={previousCard}>Previous card</button>
+                    <IconButton onClick={previousCard} size="large">
+                        <ArrowBackIosIcon />
+                    </IconButton>
                 ) : (
-                    <button disabled>
-                        Previous card
-                    </button>
+                    <IconButton disabled size="large">
+                        <ArrowBackIosIcon />
+                    </IconButton>
                 )}
 
                 {cards && current < cards.length - 1 ? (
-                    <button onClick={nextCard}>Next card</button>
+                    <IconButton onClick={nextCard} size="large">
+                        <ArrowForwardIosIcon />
+                    </IconButton>
                 ) : (
-                    <button disabled>
-                        Next card
-                    </button>
+                    <IconButton disabled size="large">
+                        <ArrowForwardIosIcon />
+                    </IconButton>
                 )}
             </div>
         </div>
