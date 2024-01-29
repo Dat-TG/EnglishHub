@@ -42,14 +42,15 @@
     "profile": "Profile",
     "logout": "Logout",
     "createNewSet": "Create new set",
-    "editSet" : "Edit Set",
+    "editSet": "Edit Set",
     "save": "Save",
-    "create" : "Create",
+    "create": "Create",
     "edit": "Edit",
     "delete": "Delete",
     "yourAllSets": "Your all flash card sets",
-    "card" : "card",
-    "cards" : "cards",
-    "title" : "Title",
-    "addNewCard" : "Add new card"
+    "card": "card",
+    "cards": "cards",
+    "title": "Title",
+    "addNewCard": "Add new card",
+    "pleaseLoginToUseThisFeature": "Please login to use this feature"
 }

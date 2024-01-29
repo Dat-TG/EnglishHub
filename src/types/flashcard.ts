@@ -1,4 +1,3 @@
-
 export interface IFlashcard {
   _id: string;
   listId: string;
@@ -9,11 +8,11 @@ export interface IFlashcard {
 }
 
 export interface IFlashCardList {
-    _id: string;
-    userId: string;
-    name: string;
-    flashcards: IFlashcard[];
-    __v: number;
+  _id: string;
+  userId: string;
+  name: string;
+  flashcards: IFlashcard[];
+  __v: number;
 }
 
 export interface IFlashcardReq {
@@ -23,5 +22,13 @@ export interface IFlashcardReq {
 }
 
 export interface IFlashcardListReq {
-  name : string;
+  name: string;
+}
+
+export interface ICreateMultipleFlashcardReq {
+  listId: string;
+  flashcards: {
+    front: string;
+    back: string;
+  }[];
 }
