@@ -53,5 +53,9 @@
     "title": "Tiêu đề",
     "addNewCard": "Thêm thẻ mới",
     "pleaseLoginToUseThisFeature": "Vui lòng đăng nhập để sử dụng tính năng này",
-    "Card": "Thẻ"
+    "Card": "Thẻ",
+    "confirmation": "Xác nhận",
+    "cancel": "Hủy",
+    "confirm": "Xác nhận",
+    "confirmDeleteCard": "Bạn có chắc chắn muốn xóa thẻ này?"
 }

@@ -53,5 +53,9 @@
     "title": "Title",
     "addNewCard": "Add new card",
     "pleaseLoginToUseThisFeature": "Please login to use this feature",
-    "Card": "Card"
+    "Card": "Card",
+    "confirmation": "Confirmation",
+    "cancel": "Cancel",
+    "confirm": "Confirm",
+    "confirmDeleteCard": "Are you sure you want to delete this card?"
 }

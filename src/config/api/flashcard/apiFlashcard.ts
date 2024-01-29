@@ -1,5 +1,6 @@
 import {
   ICreateMultipleFlashcardReq,
+  IFlashcard,
   IFlashcardListReq,
   IFlashcardReq,
 } from "../../../types/flashcard";
@@ -39,5 +40,19 @@ export const createMultipleFlashCard = async (
   data: ICreateMultipleFlashcardReq
 ) => {
   const res = await AxiosClient.post("/flashcard/create-flashcards", data);
+  return res.data;
+};
+
+export const deleteMultipleFlashCard = async (ids: string[]) => {
+  const res = await AxiosClient.delete("/flashcard/delete-flashcards", {
+    data: { flashcardIds: ids },
+  });
+  return res.data;
+};
+
+export const updateMultipleFlashCard = async (data: IFlashcard[]) => {
+  const res = await AxiosClient.patch("/flashcard/update-flashcards", {
+    flashcards: data,
+  });
   return res.data;
 };
