@@ -40,5 +40,22 @@
     "firstNameValidationMessage": "Vui lòng nhập tên.",
     "welcome": "Chào mừng",
     "profile": "Hồ sơ",
-    "logout": "Đăng xuất"
+    "logout": "Đăng xuất",
+    "createNewSet": "Tạo bộ thẻ mới",
+    "editSet": "Chỉnh sửa bộ thẻ",
+    "save": "Lưu",
+    "create": "Tạo",
+    "edit": "Edit",
+    "delete": "Delete",
+    "yourAllSets": "Tất cả bộ thẻ của bạn",
+    "card": "thẻ",
+    "cards": "thẻ",
+    "title": "Tiêu đề",
+    "addNewCard": "Thêm thẻ mới",
+    "pleaseLoginToUseThisFeature": "Vui lòng đăng nhập để sử dụng tính năng này",
+    "Card": "Thẻ",
+    "confirmation": "Xác nhận",
+    "cancel": "Hủy",
+    "confirm": "Xác nhận",
+    "confirmDeleteCard": "Bạn có chắc chắn muốn xóa danh sách thẻ này?"
 }

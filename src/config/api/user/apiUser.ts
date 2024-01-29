@@ -3,7 +3,6 @@ import {
   IRegisterUserReq,
   IInformationUpdateReq,
   IPasswordUpdateReq,
-  IUpdateUserRole,
   IResetPassword,
 } from "../../../types/user";
 import AxiosClient from "../base-client";
@@ -51,9 +50,11 @@ export const getAll = async () => {
   return res.data;
 };
 
-export const updateUserRole = (data: IUpdateUserRole) => {
-  return AxiosClient.put(`${url}/roles`, data);
+export const getAllFlashCardList = async () => {
+  const res = await AxiosClient.get(`${url}/flashcard`);
+  return res.data;
 };
+
 
 export const getUserById = async (id: number) => {
   const res = await AxiosClient.get(`${url}/details/${id}`);
