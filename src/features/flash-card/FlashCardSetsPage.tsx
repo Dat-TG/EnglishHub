@@ -22,8 +22,11 @@ import { deleteFlashCardList } from "../../config/api/flashcard/apiFlashcard";
 import { useTranslation } from "react-i18next";
 import { useSelector } from "react-redux";
 import { sGetUserInfo } from "../../store/user/selector";
+import toast from "../../utils/toast";
+import ConfirmationDialog from "../../common/ConfirmDialog";
 
 export default function FlashCardSetsPage() {
+  const [openDialog, setOpenDialog] = useState(false);
   const navigate = useNavigate();
 
   const [flashCardSets, setFlashCardSets] = useState<IFlashCardList[]>([]);
@@ -53,16 +56,24 @@ export default function FlashCardSetsPage() {
 
   const handleDeleteList = () => {
     if (selectedListId) {
-      deleteFlashCardList(selectedListId).then((res) => {
-        if (res.status === 201 || res.status === 200) {
-          const updatedFlashCardSets = flashCardSets.filter(
-            (set) => set._id !== selectedListId
-          );
-          setFlashCardSets(updatedFlashCardSets);
-          handleMenuClose();
-        }
-      });
+      deleteFlashCardList(selectedListId)
+        .then((res) => {
+          if (res.status === 201 || res.status === 200) {
+            const updatedFlashCardSets = flashCardSets.filter(
+              (set) => set._id !== selectedListId
+            );
+            setFlashCardSets(updatedFlashCardSets);
+            handleMenuClose();
+            toast.success("Delete flashcard list successfully");
+          }
+        })
+        .catch((err) => {
+          console.log(err);
+          toast.error(err.message);
+        });
     }
+    handleMenuClose();
+    setOpenDialog(false);
   };
 
   const menuId = "primary-search-account-menu";
@@ -90,7 +101,7 @@ export default function FlashCardSetsPage() {
       >
         {t("edit")}
       </MenuItem>
-      <MenuItem onClick={handleDeleteList}>{t("delete")}</MenuItem>
+      <MenuItem onClick={() => setOpenDialog(true)}>{t("delete")}</MenuItem>
     </Menu>
   );
 
@@ -186,6 +197,14 @@ export default function FlashCardSetsPage() {
         </Grid>
         {renderMenu}
       </Box>
+      <ConfirmationDialog
+        open={openDialog}
+        content={t("confirmDeleteCard")}
+        onClose={() => {
+          setOpenDialog(false);
+        }}
+        onConfirm={handleDeleteList}
+      />
     </>
   );
 }
