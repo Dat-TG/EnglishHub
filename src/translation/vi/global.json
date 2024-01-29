@@ -52,5 +52,6 @@
     "cards": "thẻ",
     "title": "Tiêu đề",
     "addNewCard": "Thêm thẻ mới",
-    "pleaseLoginToUseThisFeature": "Vui lòng đăng nhập để sử dụng tính năng này"
+    "pleaseLoginToUseThisFeature": "Vui lòng đăng nhập để sử dụng tính năng này",
+    "Card": "Thẻ"
 }

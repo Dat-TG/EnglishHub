@@ -52,5 +52,6 @@
     "cards": "cards",
     "title": "Title",
     "addNewCard": "Add new card",
-    "pleaseLoginToUseThisFeature": "Please login to use this feature"
+    "pleaseLoginToUseThisFeature": "Please login to use this feature",
+    "Card": "Card"
 }
