@@ -48,7 +48,7 @@ const SpellingCheckPage = () => {
 
             <Typography variant='h6' sx={{ mt: 2 }}>{t("speechToText")}</Typography>
 
-            <Box sx={{ border: '1px solid darkGray', borderRadius: '4px', height: '300px', padding: 1.5, overflowY: 'auto' }}>
+            <Box sx={{ border: '1px solid darkGray', borderRadius: '4px', height: '200px', padding: 1.5, overflowY: 'auto' }}>
               <Typography>
                 {transcript}
               </Typography>
@@ -74,7 +74,7 @@ const SpellingCheckPage = () => {
           <Grid item xs={6} >
             <Typography variant='h6' >{t("comparision")}</Typography>
             <Box>
-              <TextDiff text1={targetTranscript} text2={transcript} />
+              <TextDiff text1={targetTranscript.toLowerCase()} text2={transcript.toLowerCase()} />
             </Box>
           </Grid>
         </Grid>

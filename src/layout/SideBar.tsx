@@ -188,6 +188,7 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
             : "72px",
         transition: "width 0.2s, padding 0.3s",
         marginTop: "64px",
+        height: '100vh'
       }}
     >
       <CssBaseline />

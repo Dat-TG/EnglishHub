@@ -11,7 +11,7 @@ const TextDiff: React.FC<TextDiffProps> = ({ text1, text2 }) => {
 
   const renderDifference = (part: { value: string; added?: boolean; removed?: boolean }, index: number) => {
     const style: React.CSSProperties = {
-      color: part.added ? 'red' : part.removed ? 'red' : 'black',
+      color: part.added ? 'red' : part.removed ? 'red' : 'green',
     };
 
     return (
