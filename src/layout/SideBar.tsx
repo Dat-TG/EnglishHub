@@ -108,12 +108,12 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
     new MenuOption({
       name: t("checkGrammar"),
       icon: <AssignmentTurnedIn />,
-      onClick: () => {},
+      onClick: () => {navigate("/check-grammar")},
     }),
     new MenuOption({
       name: t("checkSpelling"),
       icon: <Spellcheck />,
-      onClick: () => {},
+      onClick: () => {navigate("/check-spelling")},
     }),
     new MenuOption({
       name: t("flashCard"),
@@ -188,6 +188,7 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
             : "72px",
         transition: "width 0.2s, padding 0.3s",
         marginTop: "64px",
+        height: '100vh'
       }}
     >
       <CssBaseline />
