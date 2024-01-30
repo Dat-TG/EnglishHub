@@ -9,6 +9,7 @@ import LearnFlashCardPage from "../../features/flash-card/LearnFlashCardPage";
 import CreateSet from "../../features/flash-card/CreateSet";
 import EditSet from "../../features/flash-card/EditSet";
 import SpellingCheckPage from "../../features/spell-check/SpellCheckPage";
+import GrammarCheckPage from "../../features/grammar-check/GrammarCheckPage";
 
 const router = createBrowserRouter([
   {
@@ -54,7 +55,10 @@ const router = createBrowserRouter([
         path: "/check-spelling",
         element: <SpellingCheckPage />,
       },
-     
+      {
+        path: "check-grammar",
+        element: <GrammarCheckPage />,
+      },
     ],
   },
 ]);
