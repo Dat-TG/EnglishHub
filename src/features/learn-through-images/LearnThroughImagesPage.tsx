@@ -2,6 +2,7 @@ import { useEffect, useRef, useState } from "react";
 import * as mobilenet from "@tensorflow-models/mobilenet";
 import "./style.css";
 import { useTranslation } from "react-i18next";
+import { Link } from "react-router-dom";
 
 function LearnThroughImagesPage() {
   const { t } = useTranslation("global");
@@ -115,9 +116,27 @@ function LearnThroughImagesPage() {
           {results && results.length > 0 && (
             <div className="resultsHolder">
               {results.map((result, index) => {
+                // Splitting className by ","
+                const classNames = result.className.split(",");
+
                 return (
                   <div className="result" key={result.className}>
-                    <span className="name">{result.className}</span>
+                    {/* Mapping over the classNames array to create links */}
+                    {classNames.map((className, i) => (
+                      <Link
+                        to={`/dictionary?q=${className.trim()}`}
+                        target="_blank"
+                        key={i}
+                        style={{
+                          textDecoration: "none",
+                        }}
+                      >
+                        <span className="name">
+                          {className.trim()}
+                          {i !== classNames.length - 1 && ", "}
+                        </span>
+                      </Link>
+                    ))}
                     <span className="confidence">
                       {t("confidenceLevel")}:{" "}
                       {(result.probability * 100).toFixed(2)}%{" "}
