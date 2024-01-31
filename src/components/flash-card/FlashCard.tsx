@@ -1,5 +1,5 @@
 import { Card, CardContent, Typography } from "@mui/material";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import ReactCardFlip from "react-card-flip";
 import { IFlashcard } from "../../types/flashcard";
 
@@ -13,6 +13,21 @@ const FlashCard: React.FC<Props> = ({ card }: Props) => {
   const handleFlip = () => {
     setIsFlipped((prevState) => !prevState);
   };
+
+  useEffect(() => {
+    const handleKeyDown = (event: KeyboardEvent) => {
+      if (event.key === "Enter") {
+        // Flip the card
+        setIsFlipped((prevState) => !prevState);
+      }
+    };
+    window.addEventListener("keydown", handleKeyDown);
+
+    // Cleanup event listener
+    return () => {
+      window.removeEventListener("keydown", handleKeyDown);
+    };
+  }, []);
 
   return (
     <>
