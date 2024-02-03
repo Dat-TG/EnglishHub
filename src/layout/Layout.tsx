@@ -28,7 +28,7 @@ function Layout() {
           }
         }
       />
-      <div style={{ display: "flex" }}>
+      <div style={{ flex: 1, display: "flex" }}>
         <Sidebar open={isSidebarOpen} />
         <main
           style={{ flex: 1, transition: "margin-left 0.3s", marginTop: "64px" }}
