@@ -81,14 +81,6 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
       )}
       <MenuItem
         onClick={() => {
-          setAnchorEl(null);
-          navigate("/profile");
-        }}
-      >
-        {t("profile")}
-      </MenuItem>
-      <MenuItem
-        onClick={() => {
           props.onLogout();
           setAnchorEl(null);
         }}
@@ -150,12 +142,16 @@ const PrimaryAppbar: React.FC<Props> = (props: Props) => {
                     color="inherit"
                   >
                     <Avatar
-                      // alt={`${user?.firstname} ${user?.lastname}`}
+                      alt={`${user?.name}`}
                       //src={user?.avatar}
                       style={{
                         border: "2px solid white",
+                        color: "white",
+                        backgroundColor: "#3f51b5",
                       }}
-                    />
+                    >
+                      {user?.name.charAt(0).toUpperCase()}
+                    </Avatar>
                   </IconButton>
                 ) : (
                   <>

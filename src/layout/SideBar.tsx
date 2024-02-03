@@ -10,6 +10,7 @@ import {
   AssignmentTurnedIn,
   Home,
   ImageSearch,
+  InfoRounded,
   Sell,
   Spellcheck,
 } from "@mui/icons-material";
@@ -81,6 +82,10 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
         setSelectedIndex(4);
         document.title = t("flashCard");
         break;
+      case "/about":
+        setSelectedIndex(5);
+        document.title = t("about");
+        break;
       default:
         setSelectedIndex(-1);
         break;
@@ -108,18 +113,29 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
     new MenuOption({
       name: t("checkGrammar"),
       icon: <AssignmentTurnedIn />,
-      onClick: () => {navigate("/check-grammar")},
+      onClick: () => {
+        navigate("/check-grammar");
+      },
     }),
     new MenuOption({
       name: t("checkSpelling"),
       icon: <Spellcheck />,
-      onClick: () => {navigate("/check-spelling")},
+      onClick: () => {
+        navigate("/check-spelling");
+      },
     }),
     new MenuOption({
       name: t("flashCard"),
       icon: <Sell />,
       onClick: () => {
         navigate("/learn-flashcard");
+      },
+    }),
+    new MenuOption({
+      name: t("about"),
+      icon: <InfoRounded />,
+      onClick: () => {
+        navigate("/about");
       },
     }),
   ];
@@ -188,7 +204,7 @@ const MiniDrawer: React.FC<Props> = (props: Props) => {
             : "72px",
         transition: "width 0.2s, padding 0.3s",
         marginTop: "64px",
-        height: '100vh'
+        height: "100vh",
       }}
     >
       <CssBaseline />

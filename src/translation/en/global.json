@@ -74,5 +74,9 @@
     "shortDescription": "Short description",
     "replacement": "Replacement",
     "wrongWord": "Wrong word",
-    "copiedToClipboard": "Copied to clipboard"
+    "copiedToClipboard": "Copied to clipboard",
+    "toGoToPreviousCard": "to go to previous card",
+    "toGoToNextCard": "to go to next card",
+    "toFlipCard": "to flip card",
+    "about": "About Us"
 }

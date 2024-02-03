@@ -74,5 +74,9 @@
     "shortDescription": "Mô tả ngắn",
     "replacement": "Thay thế",
     "wrongWord": "Từ sai",
-    "copiedToClipboard": "Đã sao chép vào bộ nhớ tạm"
+    "copiedToClipboard": "Đã sao chép vào bộ nhớ tạm",
+    "toGoToPreviousCard": "để quay lại thẻ trước",
+    "toGoToNextCard": "để chuyển sang thẻ tiếp theo",
+    "toFlipCard": "để lật thẻ",
+    "about": "Về chúng tôi"
 }

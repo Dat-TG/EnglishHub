@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 import { logoutUser } from "../store/user/thunkApi";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
+import ConsecutiveSnackbars from "./Snackbar";
 
 function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
@@ -28,7 +29,7 @@ function Layout() {
           }
         }
       />
-      <div style={{ display: "flex" }}>
+      <div style={{ flex: 1, display: "flex" }}>
         <Sidebar open={isSidebarOpen} />
         <main
           style={{ flex: 1, transition: "margin-left 0.3s", marginTop: "64px" }}
@@ -36,6 +37,7 @@ function Layout() {
           <Outlet />
         </main>
       </div>
+      <ConsecutiveSnackbars />
     </>
   );
 }

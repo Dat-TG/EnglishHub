@@ -129,6 +129,10 @@ code {
 
             .name {
                 color: #fff;
+
+                &:hover {
+                    color: yellow;
+                }
             }
 
             .confidence {
@@ -140,6 +144,11 @@ code {
             font-size: 20px;
             font-weight: 600;
             text-transform: uppercase;
+            color: #333;
+
+            &:hover {
+                color: blue;
+            }
         }
 
         .confidence {
