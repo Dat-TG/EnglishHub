@@ -7,6 +7,7 @@ import { Outlet } from "react-router-dom";
 import { logoutUser } from "../store/user/thunkApi";
 import { useDispatch } from "react-redux";
 import { AppDispatch } from "../store";
+import ConsecutiveSnackbars from "./Snackbar";
 
 function Layout() {
   const [isSidebarOpen, setIsSidebarOpen] = useState<boolean>(true);
@@ -36,6 +37,7 @@ function Layout() {
           <Outlet />
         </main>
       </div>
+      <ConsecutiveSnackbars />
     </>
   );
 }
